@@ -5,20 +5,20 @@ from flask import request
 from flask import abort
 import os, csv, json
 import codecs
+
+def sortdict(monstat):
+    mon = []
+    dlist = list(monstat.keys())
+    dlist.sort()
+    for j in dlist:
+        mon.append([j, len(monstat[j])])
+    return mon
+
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    text = '''
-        <!DOCTYPE HTML>
-        <title>User Manual</title>
-        <h1 align="center">-&emsp;-&emsp;-&emsp;&emsp;使用說明&emsp;&emsp;-&emsp;-&emsp;- </h1>
-    <pre>(1) <a href="http://114.34.123.174:8080/">http://114.34.123.174:8080/</a>       ---> 查看使用說明</pre>
-        <pre>(2) <a href="http://114.34.123.174:8080/stolen">http://114.34.123.174:8080/stolen</a>           ---> 新竹犯罪資料</pre>
-        <pre>(3) <a href="http://114.34.123.174:8080/fireDep">http://114.34.123.174:8080/fireDep</a>           --->消防局資料 </pre>
-        <pre>(4) http://114.34.123.174:8080/{緯度}/{經度}    ---> </pre>
-        '''
-    return text
+    return open("index.html").read()
 
 @app.route('/stolen')
 def stolen():
@@ -37,7 +37,43 @@ def stolen():
                         row = row[0:3]
                         final.append(row)
                         #print(row)
-    result = {"data":final}
+    monstat = {}
+    placestat = {}
+    eventstat = {}
+    for data in final:
+        if data[1][:5] in monstat.keys():
+            monstat[data[1][:5]].append(data)
+        else:
+            monstat[data[1][:5]]=[data]
+
+        if data[2] in placestat.keys():
+            placestat[data[2]].append(data)
+        else:
+            placestat[data[2]]=[data]
+
+        if data[0] in eventstat.keys():
+            eventstat[data[0]].append(data)
+        else:
+            eventstat[data[0]]=[data]
+
+    mon = sortdict(monstat)
+    place = sortdict(placestat)
+    event = sortdict(eventstat)
+
+    #for i in monstat.keys():#    print(i,":",len(monstat[i]))
+    # for i in mon:
+    #     print(i)
+    # for i in place:
+    #     print(i)
+    # for i in event:
+    #     print(i)
+
+    # for i in placestat.keys():
+    #     print(i,":",len(placestat[i]))
+    #
+    # for i in eventstat.keys():
+    #     print(i,":",len(eventstat[i]))
+    result = {"mon":mon,"place":place,"event":event}
     return jsonify(result)
 
 @app.route('/fireDep')
