@@ -49,8 +49,8 @@ data = json.loads(file.read())
 for i in data:
     gps = WGS84FromTWD67TM2(i["GPS TWD67 X座標"],i["GPS TWD67 Y座標"])
     if gps['status']:
-        i['lat']=gps['lat']
-        i['lng']=gps['lng']
+        i['lat']=str(gps['lat'])
+        i['lng']=str(gps['lng'])
     else:
         print("fail!")
 

@@ -12,8 +12,8 @@ for i in data:
         lat = geocode_result[0]['geometry']['location']['lat']
         lng = geocode_result[0]['geometry']['location']['lng']
         print(lat, lng)
-        i["lat"]=lat
-        i["lng"]=lng
+        i["lat"]=str(lat)
+        i["lng"]=str(lng)
     else:
         print("fail!")
         i["lat"]="24.8049301"
