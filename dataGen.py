@@ -1,8 +1,5 @@
 import urllib.request
-txt = '''http://opendata.hccg.gov.tw/dataset/c2ca1a41-541a-43d6-b36d-925987f9e413/resource/ff4dfae5-3d65-4e74-a08d-bdf780612552/download/20171005143110939.json'''
-
+txt = "http://opendata.hccg.gov.tw/dataset/cb7a7eed-cbd3-493a-98b1-f3def68f41dc/resource/45172179-8878-467d-a180-c816ca80c110/download/20171102170538990.json"
 urls = txt.split('\n')
-i=0
 for url in urls:
-    urllib.request.urlretrieve(url,".\emerg\data"+str(i)+".json")
-    i+=1
+    urllib.request.urlretrieve(url,"fire.json")

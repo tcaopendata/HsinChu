@@ -70,6 +70,13 @@ def fireDep():
     j = json.load(f)
     return jsonify(j)
 
+@app.route('/news')
+def fireDep():
+    os.chdir("/home/yung-sung/HsinChu/")
+    f = codecs.open("news.json", 'r', 'utf-8-sig')
+    j = json.load(f)
+    return jsonify(j)
+
 @app.route('/emerg')
 def emerg():
     os.chdir("/home/yung-sung/HsinChu/emerg")
@@ -116,6 +123,19 @@ def emerg():
             "monitor":m,
             "police":p}
     return jsonify(result)
+
+@app.route('/return/<string:userlat>/<string:userlng>/<string:type>')
+def return(userlat, userlng, type):
+    os.chdir("/home/yung-sung/HsinChu/")
+    if not os.path.exists('./system.json'):
+        with open('system.json', 'w') as file1:
+            data = {type:}
+            json.dump(data, file1)
+        file1.close()
+    f = open("system.json")
+    j = json.load(f)
+
+    return jsonify(j)
 
 
 if __name__ == '__main__':
