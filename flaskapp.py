@@ -129,7 +129,7 @@ def report(userlat, userlng, type):
     os.chdir("/home/yung-sung/HsinChu/")
     if not os.path.exists('./system.json'):
         with open('system.json', 'w') as file1:
-            data = {type:}
+            data = {type:[[userlat, userlng]]}
             json.dump(data, file1)
         file1.close()
     f = open("system.json")
