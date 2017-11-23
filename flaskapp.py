@@ -124,8 +124,8 @@ def emerg():
             "police":p}
     return jsonify(result)
 
-@app.route('/return/<string:userlat>/<string:userlng>/<string:type>')
-def return(userlat, userlng, type):
+@app.route('/report/<string:userlat>/<string:userlng>/<string:type>')
+def report(userlat, userlng, type):
     os.chdir("/home/yung-sung/HsinChu/")
     if not os.path.exists('./system.json'):
         with open('system.json', 'w') as file1:
