@@ -116,12 +116,16 @@ def emerg():
     file = codecs.open('police.json', 'r', 'utf-8-sig')
     p = json.loads(file.read())
 
+    file = codecs.open('ruleshot.json', 'r', 'utf-8-sig')
+    r = json.loads(file.read())
+
     result = {"AED":a,
             "emergPlace":e,
             "fireDep":f,
             "hydrant":h,
             "monitor":m,
-            "police":p}
+            "police":p,
+            "ruleshot":r}
     return jsonify(result)
 
 @app.route('/report/<string:userlat>/<string:userlng>/<string:type>')
