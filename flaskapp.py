@@ -137,18 +137,95 @@ def emerg():
             "ruleshot":r}
     return jsonify(result)
 
-@app.route('/report/<string:userlat>/<string:userlng>/<string:type>')
-def report(userlat, userlng, type):
+event_map={"0":"違規停車",
+        "1":"車禍",
+        "2":"塞車",
+        "3":"道路封閉",
+        "4":"大型障礙物",
+        "5":"交通號誌故障",
+        "6":"異常臭味",
+        "7":"火災",
+        "8":"其他"}
+
+def distance(a,b):
+    if pow(a[0]-b[0],2)+pow(a[1]-b[1],2) < 0.00005:
+        return True
+    else:
+        return False
+
+@app.route('/report/<string:type>/<string:userlat>/<string:userlng>/<string:chinese>')
+def report(userlat, userlng, type, chinese):
     os.chdir("/home/yung-sung/HsinChu/")
     if not os.path.exists('./system.json'):
-        with open('system.json', 'w') as file1:
-            data = {type:[[userlat, userlng]]}
-            json.dump(data, file1)
-        file1.close()
-    f = open("system.json")
-    j = json.load(f)
+            data = {"0":[],
+                    "1":[],
+                    "2":[],
+                    "3":[],
+                    "4":[],
+                    "5":[],
+                    "6":[],
+                    "7":[],
+                    "8":[],
+                    }
+            if int(type) in range(0,8):
+                d = {"name":event_map[type],"place":[(userlat, userlng)],"amount":1}
+                data[type].append(d)
+                with open('system.json', 'w') as file1:
+                    json.dump(data, file1)
+                file1.close()
+            elif type == "8":
+                d = {"name": chinese, "place": [(userlat, userlng)], "amount": 1}
+                data[type].append(d)
+                with open('system.json', 'w') as file1:
+                    json.dump(data, file1)
+                file1.close()
+
+    else:
+        f = open("system.json")
+        j = json.load(f)
+        if int(type) in range(0, 8):
+            flag = 0
+            for i in data[type]:
+                if distance(i[place][0],(userlat,userlng)):
+                    i[place].append((userlat,userlng))
+                    amount+=1
+                    flag =1
+            if(flag == 0):
+                d = {"name": event_map[type], "place": [(userlat, userlng)], "amount": 1}
+                data[type].append(d)
+            with open('system.json', 'w') as file1:
+                json.dump(data, file1)
+            file1.close()
+        elif type == "8":
+            d = {"name": chinese, "place": [(userlat, userlng)], "amount": 1}
+            data[type].append(d)
+            with open('system.json', 'w') as file1:
+                json.dump(data, file1)
+            file1.close()
+
+
 
     return jsonify(j)
+
+@app.route('/get_report')
+def get_report():
+    os.chdir("/home/yung-sung/HsinChu/")
+    if not os.path.exists('./system.json'):
+        data = {"0": [],
+                "1": [],
+                "2": [],
+                "3": [],
+                "4": [],
+                "5": [],
+                "6": [],
+                "7": [],
+                "8": [],
+                }
+        return jsonify(data)
+    else:
+        file = open('system.json')
+        a = json.loads(file.read())
+        return jsonify(a)
 
 
 if __name__ == '__main__':
