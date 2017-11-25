@@ -234,8 +234,15 @@ def get_report():
         return jsonify(data)
     else:
         file = open('system.json')
-        a = json.loads(file.read())
-        return jsonify(a)
+        data = json.loads(file.read())
+        dlist = list(data.values())
+        for i in dlist:
+            if len(i["place"]) != 0:
+                i["place"] = i["place"][0]
+            else:
+                i["place"] = ""
+        deal = {"accident": dlist}
+        return jsonify(deal)
 
 
 if __name__ == '__main__':
