@@ -70,10 +70,20 @@ def fireDep():
     j = json.load(f)
     return jsonify(j)
 
-@app.route('/news')
+@app.route('/fireDep')
 def fireDep():
+    os.chdir("/home/yung-sung/HsinChu/emerg")
+    f = codecs.open("fireDep.json", 'r', 'utf-8-sig')
+    j = json.load(f)
+    return jsonify(j)
+
+
+@app.route('/weather')
+def weather():
     os.chdir("/home/yung-sung/HsinChu/")
-    f = codecs.open("news.json", 'r', 'utf-8-sig')
+    url = "http://api.openweathermap.org/data/2.5/forecast?id=1675151&APPID=bd5e378503939ddaee76f12ad7a97608&units=metric"
+    urllib.request.urlretrieve(url, "weather.json")
+    f = open("weather.json")
     j = json.load(f)
     return jsonify(j)
 
