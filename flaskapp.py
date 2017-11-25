@@ -148,7 +148,7 @@ event_map={"0":"違規停車",
         "8":"其他"}
 
 def distance(a,b):
-    if pow(a[0]-b[0],2)+pow(a[1]-b[1],2) < 0.00005:
+    if pow(float(a[0])-float(b[0]),2)+pow(float(a[1])-float(b[1]),2) < 0.00005:
         return True
     else:
         return False
