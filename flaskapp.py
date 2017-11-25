@@ -70,14 +70,6 @@ def fireDep():
     j = json.load(f)
     return jsonify(j)
 
-@app.route('/fireDep')
-def fireDep():
-    os.chdir("/home/yung-sung/HsinChu/emerg")
-    f = codecs.open("fireDep.json", 'r', 'utf-8-sig')
-    j = json.load(f)
-    return jsonify(j)
-
-
 @app.route('/weather')
 def weather():
     os.chdir("/home/yung-sung/HsinChu/")
@@ -126,7 +118,7 @@ def emerg():
     file = codecs.open('police.json', 'r', 'utf-8-sig')
     p = json.loads(file.read())
 
-    file = codecs.open('ruleshot.json', 'r', 'utf-8-sig')
+    file = codecs.open('./ruleshot.json', 'r', 'utf-8-sig')
     r = json.loads(file.read())
 
     result = {"AED":a,
