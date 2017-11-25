@@ -66,7 +66,7 @@ def stolen():
 @app.route('/fireDep')
 def fireDep():
     os.chdir("/home/yung-sung/HsinChu/emerg")
-    f = codecs.open("fireDep.json", 'r', 'utf-8-sig')
+    f = codecs.open("fireDep2.json", 'r', 'utf-8-sig')
     j = json.load(f)
     return jsonify(j)
 
