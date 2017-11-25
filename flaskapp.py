@@ -210,10 +210,11 @@ def report(userlat, userlng, type, chinese):
     dlist = list(data.values())
     for i in dlist:
         i["type"] = dlist.index(i)
-        if len(i["place"])!=0:
-            i["place"]=i["place"][0]
-        else:
-            i["place"] = ""
+        for j in i:
+            if len(j["place"])!=0:
+                j["place"]=j["place"][0]
+            else:
+                j["place"] = ""
     deal = {"accident":dlist}
 
     return jsonify(deal)
@@ -238,11 +239,12 @@ def get_report():
         data = json.loads(file.read())
         dlist = list(data.values())
         for i in dlist:
-            i["type"]=dlist.index(i)
-            if len(i["place"]) != 0:
-                i["place"] = i["place"][0]
-            else:
-                i["place"] = ""
+            i["type"] = dlist.index(i)
+            for j in i:
+                if len(j["place"]) != 0:
+                    j["place"] = j["place"][0]
+                else:
+                    j["place"] = ""
         deal = {"accident": dlist}
         return jsonify(deal)
 
