@@ -209,6 +209,7 @@ def report(userlat, userlng, type, chinese):
     # j = json.load(f)
     dlist = list(data.values())
     for i in dlist:
+        i["type"] = dlist.index(i)
         if len(i["place"])!=0:
             i["place"]=i["place"][0]
         else:
@@ -237,6 +238,7 @@ def get_report():
         data = json.loads(file.read())
         dlist = list(data.values())
         for i in dlist:
+            i["type"]=dlist.index(i)
             if len(i["place"]) != 0:
                 i["place"] = i["place"][0]
             else:
