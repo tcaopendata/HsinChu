@@ -182,7 +182,8 @@ def report(userlat, userlng, type, chinese):
 
     else:
         f = open("system.json")
-        j = json.load(f)
+        data = json.load(f)
+        f.close()
         if int(type) in range(0, 8):
             flag = 0
             for i in data[type]:
@@ -203,8 +204,8 @@ def report(userlat, userlng, type, chinese):
                 json.dump(data, file1)
             file1.close()
 
-
-
+    f = open("system.json")
+    j = json.load(f)
     return jsonify(j)
 
 @app.route('/get_report')
