@@ -187,7 +187,7 @@ def report(userlat, userlng, type, chinese):
         if int(type) in range(0, 8):
             flag = 0
             for i in data[type]:
-                if distance(i[place][0],(userlat,userlng)):
+                if distance(i["place"][0],(userlat,userlng)):
                     i[place].append((userlat,userlng))
                     amount+=1
                     flag =1
