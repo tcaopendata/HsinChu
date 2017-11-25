@@ -207,7 +207,9 @@ def report(userlat, userlng, type, chinese):
 
     # f = open("system.json")
     # j = json.load(f)
-    dlist = list(data.values())
+    dlist = []
+    for i in range(9):
+        dlist.append(data[str(i)])
     for i in dlist:
         for j in i:
             j["type"] = dlist.index(i)
@@ -237,7 +239,9 @@ def get_report():
     else:
         file = open('system.json')
         data = json.loads(file.read())
-        dlist = list(data.values())
+        dlist = []
+        for i in range(9):
+            dlist.append(data[str(i)])
         for i in dlist:
             for j in i:
                 j["type"] = dlist.index(i)
