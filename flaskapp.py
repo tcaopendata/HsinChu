@@ -70,6 +70,13 @@ def fireDep():
     j = json.load(f)
     return jsonify(j)
 
+@app.route('/news')
+def news():
+    os.chdir("/home/yung-sung/HsinChu/")
+    f = codecs.open("news.json", 'r', 'utf-8-sig')
+    j = json.load(f)
+    return jsonify(j)
+
 @app.route('/weather')
 def weather():
     os.chdir("/home/yung-sung/HsinChu/")
