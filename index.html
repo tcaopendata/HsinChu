@@ -522,8 +522,10 @@
 [<span class="hljs-string">'10609機車竊盜'</span>, <span class="hljs-number">53</span>]
 [<span class="hljs-string">'10609毒品'</span>, <span class="hljs-number">66</span>]
 [<span class="hljs-string">'10609汽車竊盜'</span>, <span class="hljs-number">24</span>]
-</div></div></code></pre><h2 id="安全資料回報系統"><a class="anchor hidden-xs" href="#安全資料回報系統" title="安全資料回報系統"><span class="octicon octicon-link"></span></a>安全資料回報系統</h2><blockquote>
-<p><a href="http://114.34.123.174:8080/report/" target="_blank">http://114.34.123.174:8080/report/</a>&lt;string:userlat&gt;/&lt;string:userlng&gt;/&lt;string:type&gt;/&lt;string:chinese&gt;</p>
+</div></div></code></pre><h2 id="安全資料回報系統"><a class="anchor hidden-xs" href="#安全資料回報系統" title="安全資料回報系統"><span class="octicon octicon-link"></span></a>安全資料回報系統</h2><p>回報：</p><blockquote>
+<p><a href="http://114.34.123.174:8080/report/%7Bstring:type%7D/%7Bstring:userlat%7D/%7Bstring:userlng%7D/%7Bstring:chinese%7D" target="_blank">http://114.34.123.174:8080/report/{string:type}/{string:userlat}/{string:userlng}/{string:chinese}</a></p>
+</blockquote><p>取得：</p><blockquote>
+<p><a href="http://114.34.123.174:8080/get_report" target="_blank">http://114.34.123.174:8080/get_report</a></p>
 </blockquote><p>格式:</p><pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
 <span data-linenumber="2"></span>
 <span data-linenumber="3"></span>
@@ -602,12 +604,12 @@
                 <i class="fa fa-bars"></i>
             </a>
             <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
-                <div class="toc"><ul class="nav"><li class=""><a href="#hsinchu-hackthon-index">HsinChu Hackthon Index</a><ul class="nav"><li><a href="#緊急狀況器材資料">緊急狀況器材資料</a></li><li class=""><a href="#小心資料">小心資料</a><ul class="nav"><li><a href="#1最新新聞：">1.最新新聞：</a></li><li><a href="#2天氣狀況提醒-有預測">2.天氣狀況提醒 (有預測)</a></li><li><a href="#3交通事故提醒">3.交通事故提醒</a></li><li><a href="#4火災">4.火災</a></li><li class=""><a href="#5犯罪">5.犯罪</a></li></ul></li><li><a href="#安全資料回報系統">安全資料回報系統</a></li></ul></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+                <div class="toc"><ul class="nav"><li class=""><a href="#hsinchu-hackthon-index">HsinChu Hackthon Index</a><ul class="nav"><li class=""><a href="#緊急狀況器材資料">緊急狀況器材資料</a></li><li class=""><a href="#小心資料">小心資料</a><ul class="nav"><li><a href="#1最新新聞：">1.最新新聞：</a></li><li><a href="#2天氣狀況提醒-有預測">2.天氣狀況提醒 (有預測)</a></li><li><a href="#3交通事故提醒">3.交通事故提醒</a></li><li><a href="#4火災">4.火災</a></li><li class=""><a href="#5犯罪">5.犯罪</a></li></ul></li><li><a href="#安全資料回報系統">安全資料回報系統</a></li></ul></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
             </ul>
         </div>
     </div>
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;"  >
-        <div class="toc"><ul class="nav"><li class=""><a href="#hsinchu-hackthon-index">HsinChu Hackthon Index</a><ul class="nav"><li><a href="#緊急狀況器材資料">緊急狀況器材資料</a></li><li class=""><a href="#小心資料">小心資料</a><ul class="nav"><li><a href="#1最新新聞：">1.最新新聞：</a></li><li><a href="#2天氣狀況提醒-有預測">2.天氣狀況提醒 (有預測)</a></li><li><a href="#3交通事故提醒">3.交通事故提醒</a></li><li><a href="#4火災">4.火災</a></li><li class=""><a href="#5犯罪">5.犯罪</a></li></ul></li><li><a href="#安全資料回報系統">安全資料回報系統</a></li></ul></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+        <div class="toc"><ul class="nav"><li class=""><a href="#hsinchu-hackthon-index">HsinChu Hackthon Index</a><ul class="nav"><li class=""><a href="#緊急狀況器材資料">緊急狀況器材資料</a></li><li class=""><a href="#小心資料">小心資料</a><ul class="nav"><li><a href="#1最新新聞：">1.最新新聞：</a></li><li><a href="#2天氣狀況提醒-有預測">2.天氣狀況提醒 (有預測)</a></li><li><a href="#3交通事故提醒">3.交通事故提醒</a></li><li><a href="#4火災">4.火災</a></li><li class=""><a href="#5犯罪">5.犯罪</a></li></ul></li><li><a href="#安全資料回報系統">安全資料回報系統</a></li></ul></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
