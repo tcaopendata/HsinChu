@@ -155,6 +155,7 @@ def distance(a,b):
 
 @app.route('/report/<string:type>/<string:userlat>/<string:userlng>/<string:chinese>')
 def report(userlat, userlng, type, chinese):
+    data={}
     os.chdir("/home/yung-sung/HsinChu/")
     if not os.path.exists('./system.json'):
             data = {"0":[],
@@ -204,9 +205,17 @@ def report(userlat, userlng, type, chinese):
                 json.dump(data, file1)
             file1.close()
 
-    f = open("system.json")
-    j = json.load(f)
-    return jsonify(j)
+    # f = open("system.json")
+    # j = json.load(f)
+    dlist = list(data.values())
+    for i in dlist:
+        if len(i["place"])!=0:
+            i["place"]=i["place"][0]
+        else:
+            i["place"] = ""
+    deal = {"accident":dlist}
+
+    return jsonify(deal)
 
 @app.route('/get_report')
 def get_report():
