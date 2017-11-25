@@ -189,7 +189,7 @@ def report(userlat, userlng, type, chinese):
             for i in data[type]:
                 if distance(i["place"][0],(userlat,userlng)):
                     i["place"].append((userlat,userlng))
-                    amount+=1
+                    i["amount"]+=1
                     flag =1
             if(flag == 0):
                 d = {"name": event_map[type], "place": [(userlat, userlng)], "amount": 1}
