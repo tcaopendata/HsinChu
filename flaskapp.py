@@ -256,6 +256,23 @@ def get_report():
         deal = {"accident": dlist}
         return jsonify(deal)
 
+@app.route('/reset')
+def reset():
+    data={}
+    os.chdir("/home/yung-sung/HsinChu/")
+    data = {"0":[],
+            "1":[],
+            "2":[],
+            "3":[],
+            "4":[],
+            "5":[],
+            "6":[],
+            "7":[],
+            "8":[],
+            }
+    with open('system.json', 'w') as file1:
+        json.dump(data, file1)
+    file1.close()
 
 if __name__ == '__main__':
     app.run()
