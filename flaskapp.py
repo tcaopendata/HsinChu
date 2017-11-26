@@ -273,6 +273,18 @@ def reset():
     with open('system.json', 'w') as file1:
         json.dump(data, file1)
     file1.close()
+    dlist = []
+    for i in range(9):
+        dlist.append(data[str(i)])
+    for i in dlist:
+        for j in i:
+            j["type"] = dlist.index(i)
+            if len(j["place"]) != 0:
+                j["place"] = j["place"][0]
+            else:
+                j["place"] = ""
+    deal = {"accident": dlist}
+    return jsonify(deal)
 
 if __name__ == '__main__':
     app.run()
