@@ -46,9 +46,19 @@ for i in data:
                 rec[i["設置地點"]] = (lat, lng)
                 i["lat"] = str(lat)
                 i["lng"] = str(lng)
+                if not (pow(float(i["lat"]) - 24, 2) < 4 and pow(float(i["lng"]) - 120, 2) < 4):
+                    result = (24.8049301 + random.uniform(-0.05, 0.05), 120.9723226 + random.uniform(-0.05, 0.05))
+                    print("亂數分配", result)
+                    i["lat"] = str(result[0])
+                    i["lng"] = str(result[1])
+
             else:
                 print("\n失敗", i["設置地點"], " -> ", i["設置地點"], "---------------------------------")
                 result = (24.8049301 + random.uniform(-0.05, 0.05), 120.9723226 + random.uniform(-0.05, 0.05))
                 print("亂數分配", result)
                 i["lat"] = str(result[0])
                 i["lng"] = str(result[1])
+
+with open('hydrant.json', 'w') as file1:
+    json.dump(data, file1)
+file1.close()
