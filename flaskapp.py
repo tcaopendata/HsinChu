@@ -128,13 +128,17 @@ def emerg():
     file = codecs.open('./ruleshot.json', 'r', 'utf-8-sig')
     r = json.loads(file.read())
 
+    file = codecs.open('./hospital.json', 'r', 'utf-8-sig')
+    hos = json.loads(file.read())
+
     result = {"AED":a,
             "emergPlace":e,
             "fireDep":f,
             "hydrant":h,
             "monitor":m,
             "police":p,
-            "ruleshot":r}
+            "ruleshot":r,
+            "hospital":hos}
     return jsonify(result)
 
 event_map={"0":"違規停車",
