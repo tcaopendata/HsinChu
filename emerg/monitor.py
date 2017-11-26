@@ -41,7 +41,7 @@ for i in data:
         lat, lng=rec[i["攝影機地點 "][sta:pos]]
         i["lat"] = str(lat+ random.uniform(-0.00005, 0.00005))
         i["lng"] = str(lng+ random.uniform(-0.00005, 0.00005))
-        with open('ruleshot.json', 'w') as file1:
+        with open('monitor.json', 'w') as file1:
             json.dump(data, file1)
         file1.close()
         print("直接套用",i["攝影機地點 "][sta:pos])
@@ -62,7 +62,7 @@ for i in data:
         print("亂數分配",result)
         i["lat"] = str(result[0])
         i["lng"] = str(result[1])
-    with open('ruleshot.json', 'w') as file1:
+    with open('monitor.json', 'w') as file1:
         json.dump(data, file1)
     file1.close()
 
